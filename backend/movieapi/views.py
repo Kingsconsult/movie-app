@@ -15,18 +15,18 @@ class MovieViewSet(viewsets.ModelViewSet):
     def rate_movie(self, request, pk=None):
         rating_value = int(request.data['stars'])
         if 'stars' in request.data:
-             
-            movie = Movie.objects.get(id=pk)
-            stars = request.data['stars']
-            user = User.objects.get(id=1)
-            
-            try:
-                 rating = Rating.objects.get(user=user.id, movie=movie.id)
-                 rating.stars = stars
-                 rating.save()
-            except:
-                 Rating.objects.create(user=user, movie=movie, stars=stars)
-            
+
+            # movie = Movie.objects.get(id=pk)
+            # stars = request.data['stars']
+            # user = User.objects.get(id=1)
+
+            # try:
+            #     rating = Rating.objects.get(user=user.id, movie=movie.id)
+            #     rating.stars = stars
+            #     rating.save()
+            # except:
+            #     Rating.objects.create(user=user, movie=movie, stars=stars)
+
             if rating_value >= 1 and rating_value <= 5:
                 response = {'message': 'its working'}
                 return Response(response, status.HTTP_200_OK)
